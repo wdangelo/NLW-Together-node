@@ -1,13 +1,13 @@
-import express from 'express';
+import "reflect-metadata"
+import express from 'express'
+import {router} from './routes'
 
-const app = express();
+import './database'
 
-app.get('/test', (req, res) => {
-    return res.json({tipo: 'GET'})
-})
+const app = express()
 
-app.post('/test-post', (req, res) => {
-    return res.json({tipo: 'POST'})
-})
+app.use(express.json())
 
-app.listen(3000, () => console.log('Server is runing'))
+app.use(router)
+
+app.listen(3000, () => console.log('Server is runing in http://localhost:3000'))
