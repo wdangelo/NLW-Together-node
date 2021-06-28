@@ -1,5 +1,5 @@
 import { getCustomRepository } from 'typeorm'
-import { UserRespositories } from '../repositories/UserRepositories'
+import { UserRepositories } from '../repositories/UserRepositories'
 import { hash } from 'bcryptjs'
 
 interface IUserRequest {
@@ -12,7 +12,7 @@ interface IUserRequest {
 class CreateUserService {
 
     async execute({name, email, admin, password}: IUserRequest){
-        const userRepository = getCustomRepository(UserRespositories)
+        const userRepository = getCustomRepository(UserRepositories)
 
         if(!email){
             throw new Error("Email incorrect")
